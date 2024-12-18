@@ -1,27 +1,18 @@
 import Head from "next/head";
+import AnimatedText from "./AnimatedText";
 import DevImg from "./DevImg";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   MailIcon,
-  PhoneCall,
   Briefcase,
-  MapPin,
-  Calendar,
   Network,
   Star,
-  Wrench,
-  Music,
 } from "lucide-react";
 
 const infoData = [
   {
     icon: <Briefcase size={20} />,
     text: "Hype-ay",
-  },
-  {
-    icon: <PhoneCall size={20} />,
-    text: "+353 83 116 1066",
-    link: "tel:+353831161066",
   },
   {
     icon: <MailIcon size={20} />,
@@ -32,20 +23,25 @@ const infoData = [
     icon: <Network size={20} />,
     text: "7 employees",
   },
-  {
-    icon: <MapPin size={20} />,
-    text: "YMCA Fitness, Aungier Street, Dublin 2, Ireland",
-    link: "https://www.google.com/maps?q=YMCA+Fitness,+Aungier+Street,+Dublin+2,+Ireland",
-  },
+
 ];
 
 const qualificationData = [
   {
-    title: "training",
+    title: "We Entertain",
     data: [
       {
         qualification:
-          "Our team is trained by professional choreographers and certified in various dance styles, including salsa, hip-hop, ballroom, and contemporary.",
+          "With an incredible experienced team of artists, dancers, DJs, decorators and much more.",
+      },
+      {
+        company: "Dance Classes & Workshops",
+        role: "Conducted interactive classes and workshops for all age groups, focusing on skill development and fun.",
+      },
+
+      {
+        company: "Corporate Events",
+        role: "Tailored workshops and performances for leading companies.",
       },
     ],
   },
@@ -54,15 +50,20 @@ const qualificationData = [
     data: [
       {
         company: "Dance Shows",
-        role: "Delivered over 1000 spectacular performances across events, festivals, and corporate stages.",
-      },
-      {
-        company: "Corporate Events",
-        role: "Tailored workshops and performances for leading companies.",
+        role: "Delivered over 100 performances across events, festivals, and corporate stages.",
       },
       {
         company: "Wedding & Hen Parties",
         role: "Over 10 weddings choreographed and 15 hen party celebrations.",
+      },
+      
+      {
+        company: "Decoration",
+        role: "Designed and provided unique event decorations to enhance ambiance and aesthetics.",
+      },
+      {
+        company: "Makeup",
+        role: "Professional makeup services tailored for performances, weddings, and special occasions.",
       },
     ],
   },
@@ -75,7 +76,7 @@ const skillData = [
       {
         category: "Dance Styles",
         description:
-          "Pop, Funk, Salsa, Hip-Hop, Contemporary, Ballroom, Jazz, and more.",
+          "Solo and Ballroom dance.",
       },
       {
         category: "Event Expertise",
@@ -163,11 +164,12 @@ const About = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="canonical" href="https://hypeay.com/about" />
       </Head>
-      <section className="xl:h-[860px] pb-12 xl:py-24">
+      <section className="xl:h-[860px] pb-12 xl:py-auto">
         <div className="container mx-auto">
-          <h2 className="section-title mb-8 xl:mb-16 text-center mx-auto">
-            About Us
-          </h2>
+          <AnimatedText
+        text="About Us"
+        textStyles="h2 section-title mb-8 xl:my-16 text-center mx-auto"
+      />
           <div className="flex flex-col xl:flex-row">
             {/* Image */}
             <div className="hidden xl:flex flex-1 relative">

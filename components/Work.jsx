@@ -1,102 +1,110 @@
-'use client';
-import Link from 'next/link';
-import { Button } from './ui/button';
+"use client";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import AnimatedText from "./AnimatedText";
+import WorkItem from "./WorkItem";
 
-// import swiper react components
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// import swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/autoplay';
-
-// import required modules
-import { Pagination, Autoplay } from 'swiper/modules';
-
-// components
-import ProjectCard from '@/components/ProjectCard';
-
-const projectData = [
+// sample data for projects with various categories
+const data = [
   {
-    image: '/work/1.png',
-    category: 'Corporate',
-    name: 'Microsoft Carnival 2024',
-    description:
-      'An exciting and dynamic dance performance that brought energy and fun to Microsoft’s carnival.',
-    link: '/work/1-full.jpg',
+    href: "",
+    category: "Corporate",
+    img: "/work/1.png",
+    title: "Microsoft Carnival 2024",
   },
   {
-    image: '/work/2.png',
-    category: 'Corporate',
-    name: 'San Juan Party Accenture 2024',
-    description:
-      'A vibrant celebration with live dance performances that perfectly captured the spirit of San Juan.',
-    link: '/work/2-full.jpg',
+    href: "",
+    category: "Corporate",
+    img: "/work/2.png",
+    title: "San Juan Party Accenture 2024",
   },
   {
-    image: '/work/3.png',
-    category: 'Corporate',
-    name: 'Christmas Party at Accenture 2024',
-    description:
-      'A festive dance showcase that added joy and elegance to Accenture’s annual Christmas party.',
-    link: '/work/3-full.JPG',
+    href: "",
+    category: "Corporate",
+    img: "/work/3.png",
+    title: "Christmas Party at Accenture 2024",
   },
   {
-    image: '/work/11.png',
-    category: 'Corporate',
-    name: 'Corporate Dance Classes at LinkedIn',
-    description:
-      'Engaging and fun dance workshops designed to energize and connect LinkedIn’s corporate teams.',
-    link: '/work/11-full.jpg',
+    href: "",
+    category: "Corporate",
+    img: "/work/11.png",
+    title: "Corporate Dance Classes at LinkedIn",
   },
 ];
 
 const Work = () => {
+  // extract unique categpries from the data
+  const uniqueCategories = Array.from(
+    new Set(data.map((item) => item.category))
+  );
+
+  // create tab data with "all" category and unique categories from data
+  const tabData = [
+    { category: "all" },
+    ...uniqueCategories.map((category) => ({ category })),
+  ];
+
+  // state to manage the currently selected tab
+  const [tabValue, setTabValue] = useState("all");
+  // number of items to show initially
+  const [visibleItems, setVIsibleItems] = useState(6);
+
+  // filter work items based on the selected tab
+  const filterWork =
+    tabValue === "all"
+      ? data.filter((item) => item.category !== "all")
+      : data.filter((item) => item.category === tabValue);
+
+  // handle loading more items
+  const loadMoreItems = () => {
+    // adjust the number to control how many items are loaded at a time
+    setVIsibleItems((prev) => prev + 2);
+  };
+
   return (
-    <section className='relative mb-12 xl:mb-48'>
-      <div className='container mx-auto'>
-        {/* text */}
-        <div className='max-w-[400px] mx-auto xl:mx-0 text-center xl:text-left mb-8 xl:h-[400px] flex flex-col justify-center items-center xl:items-start'>
-          <h2 className='section-title mb-4'>
-            Celebrating <br className='block md:hidden' /> Moments
-          </h2>
-          <p className='subtitle mb-8'>
-            We believe every event tells a story. From dazzling performances to unforgettable celebrations, we bring passion and artistry to life. Here’s a glimpse into some of the magical moments we’ve had the honor of creating.
-          </p>
-          <Link href='/projects'>
-            <Button>Our Services</Button>
-          </Link>
-        </div>
-        {/* slider */}
-        <div className='relative xl:max-w-[1000px] xl:absolute right-0 top-0'>
-          <Swiper
-            className='h-[480px]'
-            slidesPerView={1}
-            breakpoints={{
-              640: {
-                slidesPerView: 2,
-              },
-            }}
-            spaceBetween={20}
-            modules={[Pagination, Autoplay]}
-            pagination={{
-              clickable: true,
-              el: '.swiper-pagination',
-            }}
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: false,
-            }}
-          >
-            {projectData.map((project, index) => (
-              <SwiperSlide key={index}>
-                <ProjectCard project={project} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-          {/* Pagination */}
-          <div className='swiper-pagination mt-4'></div>
-        </div>
+    <section className="pt-24 min-h-[1000px]" id="work">
+      <div className="container mx-auto">
+        <Tabs defaultValue="all" className="w-full flex flex-col mb-8">
+        <div className="flex flex-col items-center text-center">
+      <AnimatedText
+        text="Our Latest Events"
+        textStyles="h2 section-title mb-4 tracking-normal"
+      />
+      <p className="subtitle max-w-[800px]">
+        We believe every event tells a story. From dazzling performances to
+        unforgettable celebrations, we bring passion and artistry to life.
+        Here’s a glimpse into some of the magical moments we’ve had the honor
+        of creating.
+      </p>
+    </div>
+
+          {/* render content for the selected tab */}
+          <TabsContent value={tabValue} className="w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-[30px]">
+              <AnimatePresence>
+                {filterWork.slice(0, visibleItems).map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <WorkItem {...item} />
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </div>
+            {/* load more button */}
+            {visibleItems < filterWork.length && (
+              <div className="flex justify-center mt-12">
+                <button onClick={loadMoreItems} className="btn btn-accent">
+                  Load more
+                </button>
+              </div>
+            )}
+          </TabsContent>
+        </Tabs>
       </div>
     </section>
   );

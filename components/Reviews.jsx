@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import AnimatedText from "./AnimatedText";
 
 import {
   Card,
@@ -61,9 +62,12 @@ const reviewsData = [
 
 const Reviews = () => {
   return (
-    <section className='mb-12 xl:mb-32'>
-      <div className='container mx-auto'>
-        <h2 className='section-title mb-12 text-center mx-auto'>Reviews</h2>
+    <section className='mb-12 xl:my-32'>
+      <div className='container mx-auto '>
+      <AnimatedText
+        text="Our Reviews"
+        textStyles=" section-title mb-12 text-center mx-auto"
+      />
         {/* slider */}
         <Swiper
           slidesPerView={1}

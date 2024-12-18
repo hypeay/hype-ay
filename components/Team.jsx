@@ -1,131 +1,158 @@
 'use client';
 
-import Image from 'next/image';
+import React, { useState, useCallback } from "react";
+import { ImStarEmpty } from "react-icons/im";
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+// Swiper Imports
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/autoplay";
+import { Autoplay } from "swiper/modules";
 
-// import swiper react components
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// import swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/autoplay';
-
-// import required modules
-import { Pagination, Autoplay } from 'swiper/modules';
+import AnimatedText from "./AnimatedText";
+import Image from "next/image";
 
 const teamData = [
   {
-    avatar: '/team/avatar-1.png',
-    name: 'Giovanna Reategui',
-    job: 'CEO & Lead Dancer',
+    avatar: "/team/avatar-1.png",
+    name: "Gio",
+    job: "CEO & Lead Dancer",
     description:
-      'As the CEO and lead dancer, Giovanna combines her passion for dance with exceptional leadership to ensure every performance is unforgettable.',
+      "Giovanna combines her passion for dance with exceptional leadership to ensure every performance is unforgettable.",
   },
   {
-    avatar: '/team/avatar-2.png',
-    name: 'Morgana Abreu',
-    job: 'Business Partner & Dancer',
+    avatar: "/team/avatar-2.png",
+    name: "Mow",
+    job: "Business Partner & Dancer",
     description:
-      'Morgana excels as a Business Partner, ensuring smooth operations, while captivating audiences with her graceful moves and stage presence.',
+      "Morgana ensures smooth operations, while captivating audiences with her graceful moves and stage presence.",
   },
   {
-    avatar: '/team/avatar-3.png',
-    name: 'Lucas Guedes',
-    job: 'DJ & Dancer',
+    avatar: "/team/avatar-3.png",
+    name: "Guedes",
+    job: "DJ & Dancer",
     description:
-      'Lucas is a skilled DJ and dancer, seamlessly blending music and movement to create electrifying performances and unforgettable experiences.',
+      "Lucas seamlessly blends music and movement to create electrifying performances and unforgettable experiences.",
   },
   {
-    avatar: '/team/avatar-4.png',
-    name: 'Renan Silva',
-    job: 'Dancer',
+    avatar: "/team/avatar-4.png",
+    name: "Renan",
+    job: "Dancer",
     description:
-      'Renan is a versatile dancer whose dynamic energy and creativity make every performance stand out.',
+      "Renan’s dynamic energy and creativity make every performance stand out.",
   },
   {
-    avatar: '/team/avatar-5.png',
-    name: 'Tay Castro',
-    job: 'Dancer',
+    avatar: "/team/avatar-5.png",
+    name: "Tay",
+    job: "Dancer",
     description:
-      'Tay specializes in captivating audiences with her expressive movements and passionate performances.',
+      "Tay captivates audiences with her expressive movements and passionate performances.",
   },
   {
-    avatar: '/team/avatar-6.png',
-    name: 'Cassio Martins',
-    job: 'Photographer & Videographer',
+    avatar: "/team/avatar-6.png",
+    name: "Cassio",
+    job: "Photographer & Videographer",
     description:
-      'Cassio captures the essence of every event with stunning photography and dynamic videography.',
+      "Cassio captures the essence of every event with stunning photography and dynamic videography.",
   },
   {
-    avatar: '/team/avatar-7.png',
-    name: 'Vitoria Balbinot',
-    job: 'Makeup Artist',
+    avatar: "/team/avatar-7.png",
+    name: "Vitoria",
+    job: "Makeup Artist",
     description:
-      'Vitoria enhances the beauty of every performer with her exceptional makeup artistry, ensuring a flawless look for any event.',
+      "Vitoria ensures every performer shines with her exceptional makeup artistry.",
   },
 ];
 
 const Team = () => {
+  const [swiperRef, setSwiperRef] = useState(null);
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  const handlePrevious = useCallback(() => {
+    swiperRef?.slidePrev();
+  }, [swiperRef]);
+
+  const handleNext = useCallback(() => {
+    swiperRef?.slideNext();
+  }, [swiperRef]);
+
   return (
-    <section className='mb-12 xl:mb-32'>
-      <div className='container mx-auto'>
-        <h2 className='section-title mb-12 text-center mx-auto'>Our Team</h2>
-        {/* slider */}
-        <Swiper
-          slidesPerView={1}
-          breakpoints={{
-            640: { slidesPerView: 2 },
-            1400: { slidesPerView: 3 },
-          }}
-          spaceBetween={30}
-          modules={[Pagination, Autoplay]} // Added Autoplay module
-          pagination={{
-            clickable: true,
-          }}
-          autoplay={{
-            delay: 3000, // Slide duration in milliseconds (3 seconds)
-            disableOnInteraction: false, // Keeps autoplay active after user interaction
-          }}
-          className='h-[350px]'
-        >
-          {teamData.map((person, index) => {
-            return (
-              <SwiperSlide key={index}>
-                <Card className='bg-tertiary dark:bg-secondary/40 p-8 min-h-[300px]'>
-                  <CardHeader className='p-0 mb-10'>
-                    <div className='flex items-center gap-x-4'>
-                      {/* image */}
-                      <Image
-                        src={person.avatar}
-                        width={70}
-                        height={70}
-                        alt={`${person.name}'s avatar`}
-                        priority
-                      />
-                      {/* name */}
-                      <div className='flex flex-col'>
-                        <CardTitle>{person.name}</CardTitle>
-                        <p className='text-sm text-muted-foreground'>{person.job}</p>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardDescription className='text-lg text-muted-foreground'>
-                    {person.description}
-                  </CardDescription>
-                </Card>
+    <div className="py-24 overflow-hidden">
+      <div className="container mx-auto">
+        {/* Section Title */}
+        <AnimatedText
+          text="Our Team"
+          textStyles=" h2 mb-[30px] xl:mb-[60px] text-center section-title mb-12"
+        />
+        <div className="flex flex-col lg:flex-row gap-12">
+          {/* Slider Info */}
+          <div className="w-max xl:w-[600px] flex flex-col justify-center items-center xl:items-start text-center xl:text-left mx-auto xl:mx-0">
+            <ImStarEmpty className="text-9xl text-primary/20 leading-none mb-4" />
+            <h3 className="h3 mb-2">{teamData[activeSlide].name}</h3>
+            <p className="text-muted-foreground mb-1 text-sm">
+              {teamData[activeSlide].job}
+            </p>
+            <p className="mb-8 max-w-[360px]">{teamData[activeSlide].description}</p>
+            {/* Slider Buttons */}
+            <div className="flex gap-3">
+              <button
+                onClick={handlePrevious}
+                className="text-2xl bg-primary w-[48px] h-[48px] text-white rounded-full flex items-center justify-center hover:bg-accent-hover transition-all duration-300"
+              >
+                <FiArrowLeft />
+              </button>
+              <button
+                onClick={handleNext}
+                className="text-2xl bg-primary w-[48px] h-[48px] text-white rounded-full flex items-center justify-center hover:bg-accent-hover transition-all duration-300"
+              >
+                <FiArrowRight />
+              </button>
+            </div>
+          </div>
+
+          {/* Slider */}
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={30}
+            loop={true}
+            onSwiper={setSwiperRef}
+            breakpoints={{
+              640: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+            onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
+            modules={[Autoplay]}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            className="w-full h-[400px] xl:h-[500px]"
+          >
+            {teamData.map((member, index) => (
+              <SwiperSlide key={index} className="h-full select-none">
+                <div className="w-full h-full flex items-end">
+                  <div
+                    className={`${
+                      activeSlide === index ? "h-full" : "h-[240px]"
+                    } flex items-end rounded-2xl overflow-hidden transition-all duration-500 relative w-full`}
+                  >
+                    <Image
+                      src={member.avatar}
+                      className="object-cover object-center"
+                      quality={100}
+                      fill
+                      alt={member.name}
+                    />
+                  </div>
+                </div>
               </SwiperSlide>
-            );
-          })}
-        </Swiper>
+            ))}
+          </Swiper>
+        </div>
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -1,5 +1,5 @@
-import { MailIcon, HomeIcon, PhoneCall } from 'lucide-react';
-// components
+import { MailIcon } from 'lucide-react';
+import Socials from '@/components/Socials';
 import Form from '@/components/Form';
 import Head from 'next/head';
 
@@ -21,7 +21,7 @@ const Contact = () => {
         <meta property='og:title' content='Contact Us - Hype-ay' />
         <meta
           property='og:description'
-          content='Reach out to Hype-ay for professional dance services and event planning. Let&apos;s create magic together.'
+          content="Reach out to Hype-ay for professional dance services and event planning. Let's create magic together."
         />
         <meta property='og:type' content='website' />
         <meta property='og:url' content='https://hypeay.com/contact' />
@@ -55,7 +55,7 @@ const Contact = () => {
           {/* info text & form */}
           <div className='grid xl:grid-cols-2 mb-24 xl:mb-32'>
             {/* info text */}
-            <div className='flex flex-col gap-y-4 xl:gap-y-14 mb-12 xl:mb-24 text-base xl:text-lg'>
+            <div className='flex flex-col gap-y-8 xl:gap-y-14 mb-12 xl:mb-24 text-base xl:text-lg'>
               {/* mail */}
               <div className='flex items-center gap-x-8'>
                 <MailIcon size={18} className='text-primary' />
@@ -68,22 +68,13 @@ const Contact = () => {
                   </a>
                 </div>
               </div>
-              {/* address */}
-              <div className='flex items-center gap-x-8'>
-                <HomeIcon size={18} className='text-primary' />
-                <div>YMCA Fitness, Aungier Street, Dublin 2, Ireland</div>
-              </div>
-              {/* phone */}
-              <div className='flex items-center gap-x-8'>
-                <PhoneCall size={18} className='text-primary' />
-                <div>
-                  <a
-                    href='tel:+353831161066'
-                    className='hover:text-primary transition-colors'
-                  >
-                    +353 83 116 1066
-                  </a>
-                </div>
+              {/* socials */}
+              <div className='flex flex-col gap-y-4'>
+                <span className='font-semibold text-primary'>Connect with us:</span>
+                <Socials
+                  containerStyles='flex gap-x-6'
+                  iconsStyles='text-foreground text-[22px] hover:text-primary transition-all'
+                />
               </div>
             </div>
             <Form />

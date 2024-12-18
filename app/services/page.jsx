@@ -6,77 +6,112 @@ import { Tabs, TabsList, TabsContent, TabsTrigger } from '@/components/ui/tabs';
 import ProjectCard from '@/components/ProjectCard';
 
 const projectData = [
+  // Corporate
   {
     image: '/work/8.png',
     category: 'Corporate',
-    name: 'Corporate Dance Events',
+    name: 'Corporate Dance Events/Shows',
     description:
       'Dynamic workshops and performances designed to engage and energize corporate teams and audiences.',
-     link: '/work/8-full.jpg',
-  },
-  {
-    image: '/work/10.png',
-    category: 'Training',
-    name: 'Dance Classes',
-    description:
-      'Comprehensive classes for all levels, teaching a variety of dance styles with expert instructors.',
-     link: '/work/10-full.jpg',
-  },
-  {
-    image: '/work/7.png',
-    category: 'Personal',
-    name: 'Wedding Dance',
-    description:
-      'Custom choreography for couples to create magical and unforgettable first dance moments.',
-     link: '/work/7-full.jpg',
+    link: '/work/8-full.jpg',
   },
   {
     image: '/work/11.png',
     category: 'Corporate',
-    name: 'Team-Building Workshops',
+    name: 'Corporate Dance Class and Workshops',
     description:
-      'Interactive dance activities fostering collaboration, creativity, and team spirit at work.',
-     link: '/work/11-full.jpg',
+      'Interactive dance classes and workshops tailored to corporate needs, boosting team spirit and creativity.',
+    link: '/work/11-full.jpg',
   },
   {
-    image: '/work/12.png',
+    image: '/work/10.png',
     category: 'Corporate',
-    name: 'Event Dance Shows',
+    name: 'Stretching and Flexibility Class',
     description:
-      'Captivating performances tailored to elevate any corporate event or conference with energy.',
-     link: '/work/12-full.jpg',
-  },
-  {
-    image: '/work/9.png',
-    category: 'Corporate',
-    name: 'Product Launch Performances',
-    description:
-      'Unique dance showcases that add excitement and enhance visibility during product launches.',
-     link: '/work/9-full.jpg',
-  },
-  {
-    image: '/work/5.png',
-    category: 'Personal',
-    name: 'Hen Party Dance Routines',
-    description:
-      'Fun, energetic group routines crafted to bring life and laughter to hen party celebrations.',
-     link: '/work/5-full.jpg',
-  },
-  {
-    image: '/work/7.png',
-    category: 'Personal',
-    name: 'Bridesmaids Choreography',
-    description:
-      'Creative group choreography for bridesmaids to make your wedding day even more special.',
-     link: '/work/7-full.jpg',
+      'Stretching sessions designed to improve flexibility, reduce stress, and enhance workplace wellness.',
+    link: '/work/10-full.jpg',
   },
   {
     image: '/work/6.png',
-    category: 'Personal',
+    category: 'Corporate',
     name: 'DJ Services',
     description:
-      'Professional services to set the perfect mood for weddings, parties, and private events.',
-     link: '/work/6-full.jpg',
+      'Professional DJ services to provide the perfect soundtrack for corporate events and celebrations.',
+    link: '/work/6-full.jpg',
+  },
+  {
+    image: '/work/5.png',
+    category: 'Corporate',
+    name: 'Decoration',
+    description:
+      'Customized decoration services to enhance the ambiance and aesthetics of corporate events.',
+    link: '/work/5-full.jpg',
+  },
+  {
+    image: '/work/7.png',
+    category: 'Corporate',
+    name: 'Makeup/Brow Artist for Special Events',
+    description:
+      'Professional makeup and brow artist services tailored for corporate events and special occasions.',
+    link: '/work/7-full.jpg',
+  },
+
+  // Non-Corporate
+  {
+    image: '/work/10.png',
+    category: 'Non-Corporate',
+    name: 'Dance Classes/Stretching Classes',
+    description:
+      'Comprehensive dance and stretching classes for all levels, improving fitness, flexibility, and confidence.',
+    link: '/work/10-full.jpg',
+  },
+  {
+    image: '/work/5.png',
+    category: 'Non-Corporate',
+    name: 'Hen Party Classes',
+    description:
+      'Fun and energetic dance classes to add laughter and excitement to hen party celebrations.',
+    link: '/work/5-full.jpg',
+  },
+  {
+    image: '/work/7.png',
+    category: 'Non-Corporate',
+    name: 'Bridesmaids Choreos',
+    description:
+      'Creative group choreography for bridesmaids to make your wedding day extra special.',
+    link: '/work/7-full.jpg',
+  },
+  {
+    image: '/work/6.png',
+    category: 'Non-Corporate',
+    name: 'Wedding First Dance',
+    description:
+      'Custom choreography for couples to create magical and unforgettable first dance moments.',
+    link: '/work/6-full.jpg',
+  },
+  {
+    image: '/work/6.png',
+    category: 'Non-Corporate',
+    name: 'DJ Services',
+    description:
+      'Professional DJ services to set the perfect mood for weddings, parties, and private events.',
+    link: '/work/6-full.jpg',
+  },
+  {
+    image: '/work/5.png',
+    category: 'Non-Corporate',
+    name: 'Decoration',
+    description:
+      'Personalized decoration services to create beautiful and memorable event settings.',
+    link: '/work/5-full.jpg',
+  },
+  {
+    image: '/work/7.png',
+    category: 'Non-Corporate',
+    name: 'Makeup/Brow Artist for Special Events',
+    description:
+      'Expert makeup and brow services to help you look your best for weddings, parties, and other special occasions.',
+    link: '/work/7-full.jpg',
   },
 ];
 
@@ -100,7 +135,7 @@ const FilteredProjects = () => {
     switch (category) {
       case 'Corporate':
         return 'bg-primary';
-      case 'Personal':
+      case 'Non-Corporate':
         return 'bg-secondary';
       case 'Training':
         return 'bg-quartary';

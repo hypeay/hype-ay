@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { Download, Send } from "lucide-react";
+import AnimatedText from "./AnimatedText";
 
 import {
   RiBriefcase4Fill,
@@ -24,7 +25,10 @@ const Hero = () => {
             <div className="text-sm uppercase font-semibold mb-4 text-primary tracking-[4px]">
               Hype-ay
             </div>
-            <h2 className="h2 mb-4">Your Gateway to Unforgettable Moments</h2>
+            <AnimatedText
+        text="Your Gateway to Unforgettable Moments"
+        textStyles="h2 mb-4"
+      />
             <p className="subtitle max-w-[490px] mx-auto xl:mx-0">
               Welcome! We are passionate about creating extraordinary
               experiences through dance and entertainment.
@@ -36,15 +40,6 @@ const Hero = () => {
                   Contact Us <Send size={18} />
                 </Button>
               </Link>
-              <Link
-                href="https://www.legitfit.com/t/dancewithgio"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button variant="secondary" className="gap-x-2">
-                  Book a Class
-                </Button>
-              </Link>
             </div>
             {/* New Buttons */}
             <div className="flex flex-col gap-y-3 md:flex-row gap-x-3 mx-auto xl:mx-0">
@@ -54,18 +49,18 @@ const Hero = () => {
                   query: { category: "Corporate" },
                 }}
               >
-                <Button variant="outline" className="gap-x-2">
+                <Button variant="secondary" className="gap-x-2">
                   Corporate Services <RiBriefcase4Fill size={18} />
                 </Button>
               </Link>
               <Link
                 href={{
                   pathname: "/services",
-                  query: { category: "Personal" },
+                  query: { category: "Non-Corporate" },
                 }}
               >
-                <Button variant="outline" className="gap-x-2">
-                  Personal Services <RiTeamFill size={18} />
+                <Button variant="secondary" className="gap-x-2">
+                Non-Corporate Services <RiTeamFill size={18} />
                 </Button>
               </Link>
             </div>
@@ -96,8 +91,8 @@ const Hero = () => {
             <Badge
               containerStyles="absolute top-[60%] -right-8"
               icon={<RiTeamFill />}
-              endCountNum={1}
-              endCountText="k"
+              endCountNum={150}
+              endCountText=""
               badgeText="Happy Clients"
             />
             <div className="bg-hero_shape2_light dark:bg-hero_shape2_dark w-[500px] h-[500px] bg-no-repeat absolute -top-1 -right-2"></div>
