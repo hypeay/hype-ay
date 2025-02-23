@@ -5,8 +5,8 @@
 </g>
 <defs>
 <radialGradient id="paint0_radial_313_35" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(6 3.5) rotate(43.7811) scale(16.6208 16.6209)">
-<stop stop-color="#FBC618"/>
-<stop offset="1" stop-color="#CF2B8A"/>
+<stop stop-color="#0FEF5F"/>
+<stop offset="1" stop-color="#C609EF"/>
 </radialGradient>
 <clipPath id="clip0_313_35">
 <rect width="22" height="21" fill="white"/>

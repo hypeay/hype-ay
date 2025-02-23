@@ -56,6 +56,14 @@ const teamData = [
     icon: <FaCompactDisc className="text-6xl text-primary mb-4" />,
   },
   {
+    avatar: "/team/avatar-8.jpeg",
+    name: "Fabi",
+    job: "Dancer",
+    description:
+      "Fabi captivates audiences with her expressive movements and passionate performances.",
+    icon: <FaCompactDisc className="text-6xl text-primary mb-4" />,
+  },
+  {
     avatar: "/team/avatar-6.png",
     name: "Cassio",
     job: "Photographer & Videographer",
@@ -89,10 +97,13 @@ const Team = () => {
     <div className="py-24 overflow-hidden">
       <div className="container mx-auto">
         {/* Section Title */}
+        <div className="flex justify-center">
         <AnimatedText
           text="Our Team"
-          textStyles="h2 mb-[30px] xl:mb-[60px] text-center section-title mb-12"
+          textStyles=" h2 mb-[30px] xl:mb-[60px] text-center section-title mb-12"
         />
+        </div>
+
         <div className="flex flex-col text-center lg:flex-row gap-12">
           {/* Slider Info */}
           <div className=" xl:w-[600px] flex flex-col justify-center items-center xl:items-start text-center p-2 mx-auto xl:mx-0">

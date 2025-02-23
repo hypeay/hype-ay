@@ -23,6 +23,24 @@ import { Pagination, Autoplay } from 'swiper/modules';
 
 const reviewsData = [
   {
+    avatar: '/reviews/avatar-8.png',
+    name: 'Aitana - Linkedin',
+    review:
+      'I recently hired the services of Hype-Ay for a corporate dance workshop, as well as flex and relaxed classes, and I must say, the experience was absolutely incredible! The energy and environment created during the sessions were truly unbeatable. Giovanna has a remarkable ability to transform the atmosphere, making you forget about any stress or bad day. Her enthusiasm and positive vibes are contagious, and you can’t help but smile while dancing. It was an uplifting experience for our team, and I highly recommend their services to anyone looking to add some fun and energy to their day!',
+  },
+  {
+    avatar: '/reviews/avatar-9.png',
+    name: 'Nathalia - Accenture',
+    review:
+      'I’ve worked with Hype-Ay for several events at Accenture, and they’ve blown me away every time! The dancers bring incredible energy, the DJ is fantastic, and they’re always super professional and on time. But what really stands out is how they always go above and beyond, every time I think I know what to expect, they surprise me with something even better. From creative costumes to unforgettable performances, they truly make every event special. Highly recommend them for anyone looking to take their event to the next level.',
+  },
+  {
+    avatar: '/reviews/avatar-7.png',
+    name: 'Bruna  - Microsoft',
+    review:
+      'Hype-Ay delivered an outstanding performance at our Brazilian Carnival-themed corporate event at Microsoft, showcasing the rich diversity of Brazilian dance with energy, passion, and authenticity. From samba to frevo and Afro-Brazilian traditions, they captivated the audience, turning the event into an immersive cultural experience. Their professionalism, charisma, and ability to engage seamlessly with the crowd made a lasting impression. I highly recommend them to anyone looking to bring the true spirit of Brazil to their event!',
+  },
+  {
     avatar: '/reviews/avatar-1.png',
     name: 'Rafael Cruz',
     review:
@@ -62,7 +80,7 @@ const reviewsData = [
 
 const Reviews = () => {
   return (
-    <section className='mb-12 xl:my-32'>
+    <section className='mb-12 xl:my-28'>
       <div className='container mx-auto '>
       <AnimatedText
         text="Our Reviews"
@@ -84,12 +102,12 @@ const Reviews = () => {
             delay: 3000, 
             disableOnInteraction: false,
           }}
-          className='h-[350px]'
+          className='h-[560px]'
         >
           {reviewsData.map((person, index) => {
             return (
               <SwiperSlide key={index}>
-                <Card className='bg-tertiary dark:bg-secondary/40 p-8 min-h-[300px]'>
+                <Card className='bg-tertiary dark:bg-secondary/40 p-8 min-h-[400px]'>
                   <CardHeader className='p-0 mb-10'>
                     <div className='flex items-center gap-x-4'>
                       {/* image */}
