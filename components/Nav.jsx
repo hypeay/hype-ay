@@ -2,7 +2,9 @@ const Nav = ({ containerStyles, linkStyles, onLinkClick }) => {
   const links = [
     { path: '/', name: 'Home' },
     { path: '/services', name: 'Our Services' },
-    { path: '/contact', name: 'Contact' },
+    { path: 'https://www.legitfit.com/t/dancewithgio', name: 'Dance Classes' ,external: true},
+    { path: '/contact', name: 'Contact' }
+  
   ];
 
   return (
@@ -13,6 +15,10 @@ const Nav = ({ containerStyles, linkStyles, onLinkClick }) => {
           href={link.path}
           className={linkStyles}
           onClick={onLinkClick} // Chama a função para fechar o menu
+          {...(link.external && {
+            target: '_blank',
+            rel: 'noopener noreferrer'
+          })}
         >
           {link.name}
         </a>

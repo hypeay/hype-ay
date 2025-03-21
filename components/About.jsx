@@ -9,22 +9,7 @@ import {
   Star,
 } from "lucide-react";
 
-const infoData = [
-  {
-    icon: <Briefcase size={20} />,
-    text: "Hype-ay",
-  },
-  {
-    icon: <MailIcon size={20} />,
-    text: "management@hypeay.com",
-    link: "mailto:management@hypeay.com",
-  },
-  {
-    icon: <Network size={20} />,
-    text: "7 employees",
-  },
 
-];
 
 const qualificationData = [
   {
@@ -55,11 +40,6 @@ const qualificationData = [
       {
         company: "Wedding & Hen Parties",
         role: "Over 10 weddings choreographed and 15 hen party celebrations.",
-      },
-      
-      {
-        company: "Decoration",
-        role: "Designed and provided unique event decorations to enhance ambiance and aesthetics.",
       },
       {
         company: "Makeup",
@@ -105,24 +85,6 @@ const skillData = [
 ];
 
 const About = () => {
-  const renderInfo = () =>
-    infoData.map((item, index) => (
-      <div className="flex items-center gap-x-4 mx-auto xl:mx-0" key={index}>
-        <div className="text-primary">{item.icon}</div>
-        {item.link ? (
-          <a
-            href={item.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline text-primary"
-          >
-            {item.text}
-          </a>
-        ) : (
-          <div>{item.text}</div>
-        )}
-      </div>
-    ));
 
   const renderList = (data) =>
     data.map((item, index) => (
@@ -172,32 +134,29 @@ const About = () => {
       />
           <div className="flex flex-col xl:flex-row">
             {/* Image */}
-            <div className="hidden xl:flex flex-1 relative">
+            <div className="hidden xl:flex flex-1 relative items-center">
               <DevImg
                 containerStyles="bg-about_shape_light dark:bg-about_shape_dark w-[505px] h-[505px] bg-no-repeat relative"
                 imgSrc="/about/developer.png"
               />
+              
             </div>
             {/* Tabs */}
             <div className="flex-1">
-              <Tabs defaultValue="personal">
-                <TabsList className="w-full grid xl:grid-cols-3 xl:max-w-[520px] xl:border dark:border-none">
-                  <TabsTrigger className="w-[162px] xl:w-auto" value="personal">
-                    Who We Are
-                  </TabsTrigger>
+              <Tabs defaultValue="qualifications">
+                <TabsList className="w-full grid xl:grid-cols-2 xl:max-w-[520px] xl:border dark:border-none">
                   <TabsTrigger
                     className="w-[162px] xl:w-auto"
                     value="qualifications"
                   >
                     What We Do
                   </TabsTrigger>
-                  <TabsTrigger className="w-[162px] xl:w-auto" value="skills">
+                  <TabsTrigger className="w-[120px] xl:w-auto" value="skills">
                     Skills
                   </TabsTrigger>
                 </TabsList>
                 <div className="text-lg mt-12 xl:mt-8">
-                  {/* Personal */}
-                  <TabsContent value="personal">
+                  <TabsContent value="qualifications">
                     <div className="text-center xl:text-left">
                       <h3 className="h3 mb-4 text-lg sm:text-xl whitespace-normal leading-tight">
                         Welcome to <br className="block sm:hidden" /> Hype-ay!
@@ -208,9 +167,6 @@ const About = () => {
                         personalized classes, we bring joy, rhythm, and elegance
                         to every event.
                       </p>
-                      <div className="grid xl:grid-cols-2 gap-4 mb-12">
-                        {renderInfo()}
-                      </div>
                     </div>
                   </TabsContent>
                   {/* Qualifications */}

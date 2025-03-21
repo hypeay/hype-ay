@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
-import { Download, Send } from "lucide-react";
+import { Download, Send, CalendarDays } from "lucide-react";
 import AnimatedText from "./AnimatedText";
 
 import {
@@ -26,9 +26,9 @@ const Hero = () => {
               Hype-ay
             </div>
             <AnimatedText
-        text="Your Gateway to Unforgettable Moments"
-        textStyles="h2 mb-4"
-      />
+              text="Your Gateway to Unforgettable Moments"
+              textStyles="h2 mb-4"
+            />
             <p className="subtitle max-w-[490px] mx-auto xl:mx-0">
               Welcome! We are passionate about creating extraordinary
               experiences through dance and entertainment.
@@ -40,6 +40,15 @@ const Hero = () => {
                   Contact Us <Send size={18} />
                 </Button>
               </Link>
+              <a
+                href="https://www.legitfit.com/t/dancewithgio"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button className="gap-x-2">
+                  Weekly Dance Classes <CalendarDays size={18} />
+                </Button>
+              </a>
             </div>
             {/* New Buttons */}
             <div className="flex flex-col gap-y-3 md:flex-row gap-x-3 mx-auto xl:mx-0">
@@ -60,7 +69,7 @@ const Hero = () => {
                 }}
               >
                 <Button variant="secondary" className="gap-x-2">
-                Non-Corporate Services <RiTeamFill size={18} />
+                  Non-Corporate Services <RiTeamFill size={18} />
                 </Button>
               </Link>
             </div>

@@ -106,6 +106,7 @@ const Team = () => {
 
         <div className="flex flex-col text-center lg:flex-row gap-12">
           {/* Slider Info */}
+          
           <div className=" xl:w-[600px] flex flex-col justify-center items-center xl:items-start text-center p-2 mx-auto xl:mx-0">
             {teamData[activeSlide].icon}
             <h3 className="h3 mb-2">{teamData[activeSlide].name}</h3>
