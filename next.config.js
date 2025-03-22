@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  outputFileTracing: false, // Agora fora do bloco 'experimental'
+  outputFileTracing: false,
+  images: {
+    domains: ["via.placeholder.com"],
+  },
 };
 
 module.exports = nextConfig;

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AnimatedText from "./AnimatedText";
 import WorkItem from "./WorkItem";
+import { Button } from "./ui/button";
 import * as Dialog from "@radix-ui/react-dialog";
 
 // sample data for projects with various categories
@@ -69,7 +70,67 @@ const data = [
     img: "/work/11.png",
     title: "Corporate Dance Classes at LinkedIn",
   },
+  // Non-Corporate Events com placeholders
+  {
+    category: "Non-Corporate",
+    img: "https://via.placeholder.com/400x250?text=Cork+Carnaval+2025",
+    title: "Cork Carnaval 2025",
+    description:
+      "A colorful street celebration filled with music, dance, and culture in the heart of Cork.",
+    gallery: [
+      "https://via.placeholder.com/200x150?text=Cork+1",
+      "https://via.placeholder.com/200x150?text=Cork+2",
+      "https://via.placeholder.com/200x150?text=Cork+3",
+    ],
+  },
+  {
+    category: "Non-Corporate",
+    img: "https://via.placeholder.com/400x250?text=Carnaval+Real+2025",
+    title: "Carnaval Real Event 2025",
+    description:
+      "An unforgettable night of samba, sparkle, and celebration at the Carnaval Real!",
+    gallery: [
+      "https://via.placeholder.com/200x150?text=Real+1",
+      "https://via.placeholder.com/200x150?text=Real+2",
+    ],
+  },
+  {
+    category: "Non-Corporate",
+    img: "https://via.placeholder.com/400x250?text=International+Show+2023",
+    title: "International Show 2023",
+    description:
+      "A showcase of global talent and diverse performances, celebrating cultures from around the world.",
+    gallery: [
+      "https://via.placeholder.com/200x150?text=Show+1",
+      "https://via.placeholder.com/200x150?text=Show+2",
+      "https://via.placeholder.com/200x150?text=Show+3",
+    ],
+  },
+  {
+    category: "Non-Corporate",
+    img: "https://via.placeholder.com/400x250?text=SOHO+-+Club+Dancer",
+    title: "SOHO - Club Dancer",
+    description:
+      "An electrifying night of music and dance at SOHO, featuring top DJs and performances.",
+    gallery: [
+      "https://via.placeholder.com/200x150?text=SOHO+1",
+      "https://via.placeholder.com/200x150?text=SOHO+2",
+    ],
+  },
 ];
+
+const getCategoryClass = (category) => {
+  switch (category) {
+    case "Corporate":
+      return "bg-primary";
+    case "Non-Corporate":
+      return "bg-secondary";
+    case "Training":
+      return "bg-quartary";
+    default:
+      return "bg-primary";
+  }
+};
 
 const Work = () => {
   const uniqueCategories = Array.from(
@@ -77,17 +138,17 @@ const Work = () => {
   );
 
   const tabData = [
-    { category: "all" },
+    { category: "All Services" },
     ...uniqueCategories.map((category) => ({ category })),
   ];
 
-  const [tabValue, setTabValue] = useState("all");
-  const [visibleItems, setVIsibleItems] = useState(6);
+  const [tabValue, setTabValue] = useState("All Services");
+  const [visibleItems, setVIsibleItems] = useState(8);
   const [selectedEvent, setSelectedEvent] = useState(null);
 
   const filterWork =
-    tabValue === "all"
-      ? data.filter((item) => item.category !== "all")
+    tabValue === "All Services"
+      ? data.filter((item) => item.category !== "All Services")
       : data.filter((item) => item.category === tabValue);
 
   const loadMoreItems = () => {
@@ -105,7 +166,7 @@ const Work = () => {
   return (
     <section className="pt-24 min-h-[1000px]" id="work">
       <div className="container mx-auto">
-        <Tabs defaultValue="all" className="w-full flex flex-col mb-8">
+        <Tabs defaultValue="All Services" className="w-full flex flex-col mb-8">
           <div className="flex flex-col items-center text-center">
             <AnimatedText
               text="Our Latest Events"
@@ -118,7 +179,18 @@ const Work = () => {
               the honor of creating.
             </p>
           </div>
-
+          <TabsList className="flex justify-center w-full h-full md:grid-cols-3 lg:max-w-[640px] mb-12 mx-auto md:border dark:border-none">
+            {tabData.map(({ category }) => (
+              <TabsTrigger
+                key={category}
+                value={category}
+                onClick={() => setTabValue(category)}
+                className="capitalize w-[162px] md:w-auto"
+              >
+                {category}
+              </TabsTrigger>
+            ))}
+          </TabsList>
           {/* Render Content for Selected Tab */}
           <TabsContent value={tabValue} className="w-full">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-[30px]">
@@ -132,6 +204,7 @@ const Work = () => {
                   >
                     <WorkItem
                       {...item}
+                      className={getCategoryClass(item.category)}
                       onClick={() => handleEventClick(item)}
                     />
                   </motion.div>
@@ -141,9 +214,9 @@ const Work = () => {
             {/* Load More Button */}
             {visibleItems < filterWork.length && (
               <div className="flex justify-center mt-12">
-                <button onClick={loadMoreItems} className="btn btn-accent">
+                <Button onClick={loadMoreItems} className="btn btn-accent">
                   Load more
-                </button>
+                </Button>
               </div>
             )}
           </TabsContent>
