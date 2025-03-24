@@ -17,9 +17,9 @@ import Socials from "./Socials";
 
 const Hero = () => {
   return (
-    <section className="py-12 xl:py-24 h-[84vh] xl:pt-28 bg-hero bg-no-repeat bg-bottom bg-cover dark:bg-none">
+    <section className="py-12 xl:py-24 xl:h-[84vh] xl:pt-28 bg-hero bg-no-repeat bg-bottom bg-cover dark:bg-none">
       <div className="container mx-auto">
-        <div className="flex flex-col xl:flex-row justify-between gap-x-8">
+        <div className="flex flex-col xl:flex-row justify-between items-center gap-x-8">
           {/* text */}
           <div className="flex max-w-[600px] flex-col justify-center mx-auto xl:mx-0 text-center xl:text-left">
             <div className="text-sm uppercase font-semibold mb-4 text-primary tracking-[4px]">
@@ -75,12 +75,12 @@ const Hero = () => {
             </div>
             {/* socials */}
             <Socials
-              containerStyles="hidden xl:flex gap-x-6 mx-auto xl:mx-0 mt-8"
+              containerStyles="hidden md:flex gap-x-6 mx-auto xl:mx-0 mt-8"
               iconsStyles="text-foreground text-[22px] hover:text-primary transition-all"
             />
           </div>
           {/* image */}
-          <div className="hidden xl:flex relative">
+          <div className="hidden md:flex xl:flex relative mt-12 md:mt-16 justify-center">
             {/* badge 1 */}
             <Badge
               containerStyles="absolute top-[40%] -left-[5rem]"
