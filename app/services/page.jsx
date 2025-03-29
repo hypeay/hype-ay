@@ -11,7 +11,7 @@ import { X } from "lucide-react";
 const projectData = [
   // Corporate
   {
-    img: "/work/8.png",
+    img: "/work/8.jpg",
     category: "Corporate",
     title: "Corporate Dance Events/Shows",
     description:
@@ -27,7 +27,7 @@ const projectData = [
     gallery: ["/work/11.jpg"],
   },
   {
-    img: "/work/10.png",
+    img: "/work/10.jpg",
     category: "Corporate",
     title: "Stretching and Flexibility Class",
     description:
@@ -35,7 +35,7 @@ const projectData = [
     gallery: ["/work/10.jpg"],
   },
   {
-    img: "/work/6.png",
+    img: "/work/6.jpg",
     category: "Corporate",
     title: "DJ Services",
     description:
@@ -43,7 +43,7 @@ const projectData = [
     gallery: ["/work/6.jpg"],
   },
   {
-    img: "/work/5.png",
+    img: "/work/5.jpg",
     category: "Corporate",
     title: "Decoration",
     description:
@@ -51,7 +51,7 @@ const projectData = [
     gallery: ["/work/5.jpg"],
   },
   {
-    img: "/work/7.png",
+    img: "/work/7.jpg",
     category: "Corporate",
     title: "Makeup/Brow Artist for Special Events",
     description:
@@ -61,7 +61,7 @@ const projectData = [
 
   // Non-Corporate
   {
-    img: "/work/10.png",
+    img: "/work/10.jpg",
     category: "Non-Corporate",
     title: "Dance Classes/Stretching Classes",
     description:
@@ -69,7 +69,7 @@ const projectData = [
     gallery: ["/work/10.jpg"],
   },
   {
-    img: "/work/5.png",
+    img: "/work/5.jpg",
     category: "Non-Corporate",
     title: "Hen Party Classes",
     description:
@@ -77,7 +77,7 @@ const projectData = [
     gallery: ["/work/5.jpg"],
   },
   {
-    img: "/work/7.png",
+    img: "/work/7.jpg",
     category: "Non-Corporate",
     title: "Bridesmaids Choreos",
     description:
@@ -85,7 +85,7 @@ const projectData = [
     gallery: ["/work/7.jpg"],
   },
   {
-    img: "/work/6.png",
+    img: "/services/wedding (1).jpg",
     category: "Non-Corporate",
     title: "Wedding First Dance",
     description:
@@ -93,7 +93,7 @@ const projectData = [
     gallery: ["/work/6.jpg"],
   },
   {
-    img: "/work/6.png",
+    img: "/work/6.jpg",
     category: "Non-Corporate",
     title: "DJ Services",
     description:
@@ -101,7 +101,7 @@ const projectData = [
     gallery: ["/work/6.jpg"],
   },
   {
-    img: "/work/5.png",
+    img: "/work/5.jpg",
     category: "Non-Corporate",
     title: "Decoration",
     description:
@@ -109,7 +109,7 @@ const projectData = [
     gallery: ["/work/5.jpg"],
   },
   {
-    img: "/work/7.png",
+    img: "/services/makeup.jpg",
     category: "Non-Corporate",
     title: "Makeup/Brow Artist for Special Events",
     description:
