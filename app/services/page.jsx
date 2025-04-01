@@ -3,7 +3,7 @@ import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Head from "next/head";
 import { Tabs, TabsList, TabsContent, TabsTrigger } from "@/components/ui/tabs";
-import ServiceCard from "@/components/ServiceCard";
+import EventCard from "@/components/EventCard";
 import * as Dialog from "@radix-ui/react-dialog";
 import KeenSlider from "@/components/KeenSlider"; // se ainda não estiver
 import { X } from "lucide-react";
@@ -91,6 +91,10 @@ const projectData = [
     description:
       "Custom choreography for couples to create magical and unforgettable first dance moments.",
     gallery: ["/work/6.jpg"],
+    video: [
+      "/services/wedding/wedding (1).mp4",
+      "/services/wedding/wedding (2).mp4",
+    ],
   },
   {
     img: "/work/6.jpg",
@@ -114,7 +118,10 @@ const projectData = [
     title: "Makeup/Brow Artist for Special Events",
     description:
       "Expert makeup and brow services to help you look your best for weddings, parties, and other special occasions.",
-    gallery: ["/work/7.jpg"],
+    gallery: [
+      "/services/makeup/makeup (1).jpg",
+      "/services/makeup/makeup (1).jpg",
+    ],
   },
 ];
 
@@ -181,10 +188,12 @@ const FilteredProjects = () => {
                 (project) => cat === "all services" || project.category === cat
               )
               .map((project, index) => (
-                <ServiceCard
+                <EventCard
                   key={index}
-                  project={project}
-                  bgClass={getCategoryClass(project.category)}
+                  category={project.category}
+                  img={project.img}
+                  title={project.title}
+                  className={getCategoryClass(project.category)}
                   onClick={() => handleOpenProject(project)}
                 />
               ))}
@@ -206,7 +215,12 @@ const FilteredProjects = () => {
                   {selectedProject.description}
                 </Dialog.Description>
 
-                <KeenSlider images={selectedProject.gallery} />
+                <KeenSlider
+                  mediaItems={[
+                    ...(selectedProject?.gallery || []),
+                    ...(selectedProject?.video || []),
+                  ]}
+                />
 
                 <div className="flex justify-center mt-6">
                   <Dialog.Close asChild>

@@ -23,7 +23,7 @@ const ServiceCard = ({ project, bgClass, onClick }) => {
           fill
           priority
           quality={100}
-          className="w-full h-full object-cover object-top md:object-contain transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-[top_center] object-contain transition-transform duration-500 group-hover:scale-105"
         />
 
         <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
